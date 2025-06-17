@@ -1,4 +1,7 @@
 
+# define external dependencies
+add_subdirectory(external/spdlog)
+
 # define which files are to be compiled,
 # and specify that we are creating a library
 add_library(MapleEngine SHARED
@@ -22,3 +25,6 @@ target_include_directories(
 # this allows us to differentiate between compiling the library and
 # importing headers into other projects
 target_compile_definitions(MapleEngine PRIVATE MAPLE_ENGINE_EXPORTS)
+
+# link spdlog and MapleEngine
+target_link_libraries(MapleEngine PRIVATE spdlog)
