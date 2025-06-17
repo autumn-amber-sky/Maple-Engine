@@ -7,27 +7,19 @@
 #include "spdlog/sinks/stdout_color_sinks-inl.h"
 
 namespace Maple {
-    bool Log::isFormatDefined = false;
+    std::shared_ptr<spdlog::logger> Log::engineLogger = nullptr;
+    std::shared_ptr<spdlog::logger> Log::applicationLogger = nullptr;
 
-    Log::Log() {
+    void Log::Init() {
         spdlog::set_pattern("%^[%T] %n: %v%$");
-        logger = spdlog::stdout_color_mt("MapleEngine");
-        logger->set_level(spdlog::level::trace);
-    }
 
-    void Log::trace(const std::string &msg) const {
-        logger->trace(msg);
-    }
+        engineLogger = spdlog::stdout_color_mt("MapleEngine");
+        engineLogger->set_level(spdlog::level::trace);
+        engineLogger->info("Maple Engine - Logger Established");
 
-    void Log::info(const std::string &msg) const {
-        logger->info(msg);
-    }
-
-    void Log::warning(const std::string &msg) const {
-        logger->warn(msg);
-    }
-
-    void Log::error(const std::string &msg) const {
-        logger->error(msg);
+        applicationLogger = spdlog::stdout_color_mt("MapleApplication");
+        applicationLogger->set_level(spdlog::level::trace);
+        applicationLogger->info("Maple Application - Logger Established");
     }
 }
+

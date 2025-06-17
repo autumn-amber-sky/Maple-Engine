@@ -9,8 +9,7 @@
 
 namespace Maple {
     int RunEngine(App *Application) {
-        const auto logEngine = std::make_shared<Log>();
-        logEngine->info("Maple Engine");
+        Log::Init();
 
         Application->Start();
         delete Application;

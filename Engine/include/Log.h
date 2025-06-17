@@ -11,14 +11,23 @@
 namespace Maple {
     class Log {
     public:
-        Log();
+        Log() = default;
         ~Log() = default;
-        void trace(const std::string &msg) const;
-        void info(const std::string &msg) const;
-        void warning(const std::string &msg) const;
-        void error(const std::string &msg) const;
-    private:
-        static bool isFormatDefined;
-        std::shared_ptr<spdlog::logger> logger;
+        static void Init();
+        static std::shared_ptr<spdlog::logger> engineLogger;
+        static std::shared_ptr<spdlog::logger> applicationLogger;
     };
+
+// Maple Engine Logs
+#define MAPLE_ENGINE_TRACE(...)  ::Maple::Log::engineLogger->trace(__VA_ARGS__)
+#define MAPLE_ENGINE_INFO(...)   ::Maple::Log::engineLogger->info(__VA_ARGS__)
+#define MAPLE_ENGINE_WARN(...)   ::Maple::Log::engineLogger->warn(__VA_ARGS__)
+#define MAPLE_ENGINE_ERROR(...)  ::Maple::Log::engineLogger->error(__VA_ARGS__)
+
+// Maple Application Logs
+#define MAPLE_APP_TRACE(...)  ::Maple::Log::applicationLogger->trace(__VA_ARGS__)
+#define MAPLE_APP_INFO(...)   ::Maple::Log::applicationLogger->info(__VA_ARGS__)
+#define MAPLE_APP_WARN(...)   ::Maple::Log::applicationLogger->warn(__VA_ARGS__)
+#define MAPLE_APP_ERROR(...)  ::Maple::Log::applicationLogger->error(__VA_ARGS__)
 }
+
