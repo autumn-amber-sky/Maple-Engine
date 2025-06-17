@@ -11,6 +11,8 @@ add_library(MapleEngine SHARED
         include/App.h
         src/Engine.cpp
         include/Engine.h
+        src/Log.cpp
+        include/Log.h
 )
 
 # defines our headers for linking???

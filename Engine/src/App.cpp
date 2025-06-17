@@ -14,7 +14,9 @@ namespace Maple {
     }
 
     void App::Start() {
-        std::cout << "Starting Maple Sandbox!" << std::endl;
+        //std::cout << "Starting Maple Sandbox!" << std::endl;
+
+
         while (true) {
 
         }
