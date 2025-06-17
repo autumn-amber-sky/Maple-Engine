@@ -4,20 +4,21 @@
 
 #pragma once
 
-#include "MapleCore.h"
+#include <spdlog/spdlog.h>
 #include <memory>
-#include "spdlog/spdlog.h"
+#include <string>
 
 namespace Maple {
-    class MAPLE_API Log {
+    class Log {
     public:
-        static void Init();
-
-        static std::shared_ptr<spdlog::logger>& GetEngineLogger() { return engineLogger; }
-        static std::shared_ptr<spdlog::logger>& GetAppLogger() { return appLogger; }
+        Log();
+        ~Log() = default;
+        void trace(const std::string &msg) const;
+        void info(const std::string &msg) const;
+        void warning(const std::string &msg) const;
+        void error(const std::string &msg) const;
     private:
-        static std::shared_ptr<spdlog::logger> engineLogger;
-        static std::shared_ptr<spdlog::logger> appLogger;
-
+        static bool isFormatDefined;
+        std::shared_ptr<spdlog::logger> logger;
     };
 }

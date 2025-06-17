@@ -5,7 +5,6 @@
 #pragma once
 #include "MapleCore.h"
 
-
 namespace Maple {
     class App;
     int MAPLE_API RunEngine(App* Application);
