@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.31)
-project(maple_engine)
+project(MapleEngineProject)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(maple_engine main.cpp)
+# this CMakeLists.txt functions as the root of the project
+# we can use this to define subdirectories to look for other cmake files,
+# which in turn allow us to create separate compilable modules.
+
+add_subdirectory(Engine)
+add_subdirectory(Sandbox)
