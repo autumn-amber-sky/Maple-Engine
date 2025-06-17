@@ -9,8 +9,7 @@
 
 namespace Maple {
     int RunEngine(App *Application) {
-        // todo: Setup Logs
-        auto logEngine = std::make_shared<Log>();
+        const auto logEngine = std::make_shared<Log>();
         logEngine->info("Maple Engine");
 
         Application->Start();
